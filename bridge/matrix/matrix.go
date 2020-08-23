@@ -8,6 +8,7 @@ import (
 	"regexp"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/42wim/matterbridge/bridge"
 	"github.com/42wim/matterbridge/bridge/config"
@@ -58,6 +59,7 @@ func (b *Bmatrix) Disconnect() error {
 }
 
 func (b *Bmatrix) JoinChannel(channel config.ChannelInfo) error {
+	time.Sleep(10 * time.Second)
 	resp, err := b.mc.JoinRoom(channel.Name, "", nil)
 	if err != nil {
 		return err
